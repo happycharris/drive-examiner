@@ -46,6 +46,7 @@ function storeInput(valuefromHTMLFile) {
 
    }
 
+//Reads in file ID and gets children, then passes them to the loop for further iteration
 
 function folderID(ID,counter) {
 //   Logger.log(ID);

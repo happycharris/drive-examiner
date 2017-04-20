@@ -66,26 +66,31 @@
 
 
 
-  <input type="text" id ="ID" class="Boxtextinput" name="q" size="21" maxlength="120"><input type = "button" value ="Audit Files"  class="Boxbutton" onclick="google.script.run.withSuccessHandler().storeInput($('#ID').val())">
+  <input type="text" id ="ID" class="Boxtextinput" name="q" size="21" maxlength="120"><input type = "button" value ="Audit Files"  class="Boxbutton" onclick="google.script.run.withSuccessHandler().withFailureHandler(onFailure).storeInput($('#ID').val())">
 
 
   <div id="numberofFiles">
   </div>
 
 
+ <div id="errors">
+  </div>
 
  <script>
 
+      function onFailure(error) {
+        var div = document.getElementById('errors');
+        div.innerHTML = "ERROR: " + error.message;
+      }
+  
 
-
-
-  function fileCount(fileCounter) {
-
-     var div = document.getElementById('numberofFiles');
-     div.innerHTML = fileCounter;
-     google.script.run.folderID();
-
-  }
+//  function fileCount(fileCounter) {
+//
+//     var div = document.getElementById('numberofFiles');
+//     div.innerHTML = fileCounter;
+//     google.script.run.folderID();
+//
+//  }
 
 
 

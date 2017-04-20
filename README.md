@@ -9,4 +9,4 @@
 
 <p>After installing this application, Drive Examiner should appear in the menu of the open sheets file. Click on Drive Examiner and then click "Show sidebar". Once the sidebar appears, input the folder ID of the folder you would like the audit.</p>
 
-<p>Please comment about any problems with the app by clicking on the <bold>Issues</bold> tab in Github and leaving a change request</p>
+<p>Please comment about any problems with the app by clicking on the <strong>Issues</strong> tab in Github and leaving a change request</p>

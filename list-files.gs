@@ -1,4 +1,4 @@
-var counter = 0;
+var counter;
 
 function onInstall(e) {
   onOpen(e);
@@ -16,7 +16,7 @@ function onOpen() {
 
 
 function showSidebar() {
-   var html = HtmlService.createHtmlOutputFromFile('Search.html')
+   var html = HtmlService.createHtmlOutputFromFile('search.html')
       .setTitle('List Files')
       .setWidth(300);
    SpreadsheetApp.getUi() // Or DocumentApp or FormApp.
@@ -40,17 +40,17 @@ function storeInput(valuefromHTMLFile) {
 
        var ID = userInput;
        counter = 0;
-       fileCounter = 0;
        folderID(ID,counter);
 
 
    }
 
+
 //Reads in file ID and gets children, then passes them to the loop for further iteration
 
 function folderID(ID,counter) {
-//   Logger.log(ID);
-   returnFileCount();
+//   Logger.log(ID); checks the ID value being passed
+  
    var currfolder;
    var currfolder = DriveApp.getFolderById(ID);
    var name = currfolder.getName();
@@ -58,10 +58,8 @@ function folderID(ID,counter) {
    var subFiles;
    var childfolders = currfolder.getFolders();
 
-//   Logger.log(counter);
 
   if (counter == 0){
-
 
     listFilesfromParent(childfolders,files,name,currfolder,subFiles,ID,counter);
   }
@@ -100,7 +98,6 @@ function listFiles(childfolders,files,name,currfolder,subFiles,editors){
 
      subFiles = childfolders.next().getFiles();
 
-
      while (subFiles.hasNext()){
 
        var i;
@@ -108,7 +105,6 @@ function listFiles(childfolders,files,name,currfolder,subFiles,editors){
 
       SpreadsheetApp.getActiveSheet().appendRow([name, File.getName(), File.getOwner().getName(),File.getSharingAccess(), getEditors(File), getViewers(File), getPath(File), File.getUrl()]);
          Logger.clear();
-
     }
 
   }
@@ -133,13 +129,13 @@ function getChildID(currfolder,files,name){
 }
 
 
-
-function returnFileCount() {
-
-    var fileCount = SpreadsheetApp.getActiveSheet().getLastRow();
-    var fileCounter = fileCount + " files audited so far";
-    return fileCounter;
-}
+// This function is meant to return the total number of files audited in the sidebar, it is not yet working.
+//function returnFileCount() {
+//
+//    var fileCount = SpreadsheetApp.getActiveSheet().getLastRow();
+//    var fileCounter = fileCount + " files audited so far";
+//    return fileCounter;
+//}
 
 
 function getEditors(File) {

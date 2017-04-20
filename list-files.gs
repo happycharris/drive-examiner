@@ -7,7 +7,7 @@ function onInstall(e) {
 
 function onOpen() {
   SpreadsheetApp.getUi() // Or DocumentApp or FormApp.
-      .createMenu('GDrive Folder Audit')
+      .createMenu('Drive Examiner')
       .addItem('Show sidebar', 'showSidebar')
       .addToUi();
      clearSheet();

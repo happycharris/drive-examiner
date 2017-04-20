@@ -17,7 +17,7 @@ function onOpen() {
 
 function showSidebar() {
    var html = HtmlService.createHtmlOutputFromFile('search.html')
-      .setTitle('List Files')
+      .setTitle('Drive Examiner')
       .setWidth(300);
    SpreadsheetApp.getUi() // Or DocumentApp or FormApp.
       .showSidebar(html);
